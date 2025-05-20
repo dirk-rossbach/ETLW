@@ -95,13 +95,13 @@ services:
       POSTGRES_PASSWORD: airflow
       POSTGRES_MULTIPLE_DATABASES: airflow,ETLW
     volumes:
-      - ./initEtlwDb.sql:/docker-entrypoint-initdb.d/initEtlwDb.sql
-      - postgres-db-volume:/var/lib/postgresql/data
+        - postgres-db-volume:/var/lib/postgresql/data
+        - ./initEtlwDb.sql:/docker-entrypoint-initdb.d/initEtlwDb.sql
+    healthcheck:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 10s
       retries: 5
       start_period: 5s
-      - ./initEtlwDb.sql:/docker-entrypoint-initdb.d/initEtlwDb.sql
     restart: always
 
   redis:
