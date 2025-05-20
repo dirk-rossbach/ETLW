@@ -93,6 +93,7 @@ services:
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
+      POSTGRES_MULTIPLE_DATABASES: airflow,ETWL
       POSTGRES_DB: airflow
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
